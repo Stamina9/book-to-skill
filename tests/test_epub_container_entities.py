@@ -40,6 +40,7 @@ class TestEpubContainerEntities(unittest.TestCase):
                  ("OEBPS/A&#38;B.opf", "OEBPS/A&B.opf"),
                  ("OEBPS/plain.opf", "OEBPS/plain.opf"),
                  ("OEBPS/A&#x26;B.opf", "OEBPS/A&B.opf"),
+                 ("OEBPS/A&#x80;B.opf", "OEBPS/A\x80B.opf"),
                  ("OEBPS/A&copy;.opf", "OEBPS/A&copy;.opf"))
         with tempfile.TemporaryDirectory() as tmp:
             for attribute, member in cases:
