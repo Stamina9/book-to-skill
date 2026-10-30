@@ -99,7 +99,13 @@ def _find_opf_path(zf: zipfile.ZipFile) -> str | None:
         container = _decode_epub_xml(zf.read("META-INF/container.xml"))
         match = re.search(r'full-path=["\']([^"\']+\.opf)["\']', container)
         if match:
-            return match.group(1)
+            # Decode XML's predefined and numeric references once. Restrict the
+            # match rather than decoding HTML-only or unterminated entities in
+            # tolerant legacy inputs that may have literal ampersands.
+            return re.sub(
+                r"&(?:amp|lt|gt|quot|apos|#[0-9]+|#x[0-9a-fA-F]+);",
+                lambda entity: html.unescape(entity.group()), match.group(1),
+            )
     except (KeyError, Exception):
         pass
 
