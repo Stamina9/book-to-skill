@@ -40,6 +40,26 @@ In GitHub Copilot CLI you may need to run `/skills reload` after the file is wri
 
 ---
 
+## Using older technical sources
+
+A generated skill reflects its source edition. Before applying its code or
+commands to a current project, review the generated skill's **Scope & Limits**
+and record the source's publication year, edition, and software versions when
+known. Mark missing version information as unknown.
+
+For example, a skill derived from a 2003 technical book could include:
+
+> **Currency:** Based on the 2003 edition. API and command examples describe
+> that source; compatibility with current versions has not been checked.
+
+When current compatibility matters, check the relevant official documentation
+or run a targeted example against your project's version. Record the version
+and verification date alongside any updated advice, keeping it distinguishable
+from the book's account. Conversion itself performs no automatic compatibility
+check.
+
+---
+
 ## 💬 What people do with it
 
 A DevEx book became a survey applied to 300+ engineers. A scanned PDF that stalled a run became [#130](https://github.com/virgiliojr94/book-to-skill/pull/130), the early-abort fix — reported by someone who does not write software.
